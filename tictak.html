@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="Stylesheet"href="tik.css"> -->
+    <title>TIK-TAK-TOE-GAME</title>
+</head>
+<body style="background-color: #eb8da5;
+text-align: center;background-size: cover;
+background-image:url( 'circuit1.jpg');
+">
+    
+    <h1 style="color: white;"> TIK TAK TOE
+
+    </h1>
+    <div class="msgcontainer hide"  style="    height:30vmin;    
+
+        
+
+"> 
+        <p class="msg winner" style="background-color: #0a7f9c;
+        color:#b3abad;
+        font-size: 8vmin;"></p>
+       
+        <button id="newgm"  style=" padding: 1rem;
+        font-size: 2rem;
+        background-color: aqua;
+        color:rgb(187, 187, 187);
+        border: none;
+        border-radius: 1rem;
+        background-image:url('circuit.jpg');
+        background-size: cover;
+    ">new Game</button>
+    </div>
+    <main>
+        <div class="container"  style=" height:70vh;
+        display: flex;
+    
+    justify-content: center;
+    align-items: center;">
+        <div class="game"  style="height:60vmin;
+        width:60vmin;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* to add gap in each element of div */
+        gap: 1.5vmin;">
+
+            <button class="box"  style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3">
+                 
+            </button>
+            <button class="box" style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box" style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+            <button class="box"style="height:18vmin;
+            width:18vmin;
+            background-color:rgba(18, 117, 231, 0.4) ;
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 0 1rem rgba(0 0 0 0.1);
+            font-size: 8vmin;
+            color:#ebf0f3"></button>
+
+        </div>
+        </div>
+        <button id = "resetbtn"  style=" padding: 1rem;
+        font-size: 2.0rem;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        background-color: aqua;
+        color:rgb(255, 255, 255);
+        border: none;
+        border-radius: 1rem;
+        background-image: url(btn.png);
+        background-size: cover;"> RESET GAME</button>
+        
+    </main>
+    
+    
+ <script >
+    let boxes = document.querySelectorAll(".box");
+let resetbtn = document.querySelector("#resetbtn");
+let newgamebtn = document.querySelector("#newgm");
+let msgcontainer = document.querySelector(".msgcontainer");
+let msg = document.querySelector(".msg");
+
+let turnx = true;
+
+const gamepattern = [[0,1,2],
+[0,3,6],[0,4,8],[1,4,7],[2,5,8],[2,4,6],[3,4,5],[6,7,8]];
+// reset game
+// enable box
+const enablebx = ()=>{for (box of boxes){box.disabled=false;
+    box.innerText="";
+}};
+
+
+const resetGame =()=>{
+    turnx=true;
+    enablebx();
+    msgcontainer.classList.add("hide");
+}
+
+boxes.forEach(
+    (box)=>{
+        box.addEventListener("click",()=>{
+            if(turnx === true){box.innerText = "X";
+                turnx = false;}
+                else{box.innerText="O";
+                    turnx=true;
+
+                }
+                box.disabled=true;
+                
+                checkwinner();
+
+
+
+                // check winner 
+
+              
+            
+        });
+    }
+);
+// show winning msg
+const disblbx = ()=>{for (box of boxes){box.disabled=true;}};
+const showwinner=(winner)=>{
+    msg.innerText=`congratulations,winner is player ${winner}`;
+    msgcontainer.classList.remove("hide");
+    disblbx();
+}
+
+const checkwinner =()=>{
+    for(let pattern of gamepattern ){
+        let pos1=boxes[pattern[0]].innerText;
+        let pos2=boxes[pattern[1]].innerText;
+        let pos3=boxes[pattern[2]].innerText;
+
+        if(pos1 != "" && pos2 != "" && pos3 != ""){
+            if(pos1 === pos2 && pos2 === pos3){
+               console.log("winner is player", pos1);
+                showwinner(pos1);
+            }
+        }
+    }
+        
+};
+
+newgamebtn.addEventListener("click",resetGame);
+resetbtn.addEventListener("click",resetGame);
+
+ </script>
+</body>
+</html>

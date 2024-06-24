@@ -1,0 +1,90 @@
+*{margin :0;
+padding:0;
+
+}
+body{
+    background-color: rgb(235, 141, 165);
+    text-align: center;
+    background-image:url( "circuit1.jpg");
+    background-size: cover;
+}
+.container{
+    height:70vh;
+    display: flex;
+
+justify-content: center;
+align-items: center;
+}
+.game{
+height:60vmin;
+width:60vmin;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+/* to add gap in each element of div */
+gap: 1.5vmin;
+
+}
+
+.box{
+height:18vmin;
+width:18vmin;
+background-color:rgba(18, 117, 231, 0.4) ;
+border-radius: 1rem;
+border: none;
+box-shadow: 0 0 1rem rgba(211, 3, 3, 0.1);
+font-size: 8vmin;
+color:#ebf0f3
+}
+
+
+#resetbtn{
+    padding: 1rem;
+    font-size: 2.0rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: aqua;
+    color:rgb(255, 255, 255);
+    border: none;
+    border-radius: 1rem;
+    background-image: url(btn.png);
+    background-size: cover;
+    
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#newgm{
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: aqua;
+    color:rgb(187, 187, 187);
+    border: none;
+    border-radius: 1rem;
+    background-image:url("circuit.jpg");
+    background-size: cover;
+
+}
+.msg{
+    background-color: #0a7f9c;
+    color:#b3abad;
+    font-size: 8vmin;
+}
+.msgcontainer{
+    height:30vmin;
+    
+}
+.hide{
+    display:none;
+}
+
+/* #audi{
+    visibility:hidden;
+    
+} */
